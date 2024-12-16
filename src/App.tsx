@@ -24,11 +24,12 @@ export const App: React.FC = () => {
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
   useEffect(() => {
-    getTodos().then(data => {
-      setTodosFromServer(data);
-      setIsDataLoaded(true);
-    });
-  }, [status]);
+    getTodos()
+      .then(data => {
+        setTodosFromServer(data);
+      })
+      .finally(() => setIsDataLoaded(true));
+  }, []);
 
   const filteredTodos = todosFromServer
     .filter(todo => {

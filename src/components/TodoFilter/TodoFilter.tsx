@@ -1,6 +1,6 @@
 type Props = {
-  setStatus: (status: () => string) => void;
-  setQuery: (status: () => string) => void;
+  setStatus: (status: string) => void;
+  setQuery: (status: string) => void;
   query: string;
 };
 
@@ -8,13 +8,13 @@ export const TodoFilter: React.FC<Props> = ({ query, setStatus, setQuery }) => {
   const handlerOnChangeStatus = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ): void => {
-    setStatus(() => event.target.value);
+    setStatus(event.target.value);
   };
 
   const handlerOnChangeQuery = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    setQuery(() => event.target.value);
+    setQuery(event.target.value);
   };
 
   return (
@@ -49,7 +49,7 @@ export const TodoFilter: React.FC<Props> = ({ query, setStatus, setQuery }) => {
               type="button"
               className="delete"
               onClick={() => {
-                setQuery(() => '');
+                setQuery('');
               }}
             />
           </span>
